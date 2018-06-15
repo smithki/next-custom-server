@@ -1,0 +1,71 @@
+{
+  "name": "next-custom-server",
+  "version": "0.2.0",
+  "description": "Next.js plugin enabling custom servers to be processed by Webpack.",
+  "author": "Ian K Smith <smithki707@gmail.com>",
+  "license": "MIT",
+  "repository": "https://gitlab.com/o3-studio/next-custom-server",
+  "bugs": "https://gitlab.com/o3-studio/next-custom-server/issues",
+  "keywords": [
+    "next",
+    "plugin",
+    "ssr",
+    "server"
+  ],
+  "bin": {
+    "next-custom-server": "./dist/bin/index.js"
+  },
+  "main": "./dist/index.js",
+  "scripts-info": {
+    "info": "Show all scripts.",
+    "clean": "Clean up existing build output.",
+    "dev": "Bundle and watch for changes.",
+    "build": "Bundle for optimized use.",
+    "lint": "Lint using TSLint and format using Prettier",
+    "release:patch": "Release a patch version.",
+    "release:minor": "Release a minor version.",
+    "release:major": "Release a major version."
+  },
+  "scripts": {
+    "info": "npm-scripts-info",
+    "clean": "del ./dist",
+    "dev": "npm run clean && tsc --watch",
+    "build": "npm run clean && tsc",
+    "lint": "tslint --project ./tsconfig.json",
+    "precommit": "lint-staged",
+    "prerelease": "npm run lint && npm run build",
+    "release:patch": "npm run prerelease && npm version patch && npm publish",
+    "release:minor": "npm run prerelease && npm version minor && npm publish",
+    "release:major": "npm run prerelease && npm version major && npm publish"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "chokidar": "^2.0.2",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "@smithkistyle/tslint-config": "^5.0.2",
+    "@types/next": "latest",
+    "@types/node": "^9.4.6",
+    "@types/react": "16.0.38",
+    "@types/yargs": "^11.0.0",
+    "del-cli": "^1.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "next": "latest",
+    "npm-scripts-info": "^0.3.7",
+    "prettier": "^1.10.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  },
+  "peerDependencies": {
+    "next": "^5.0.0"
+  }
+}
