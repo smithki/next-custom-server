@@ -6,7 +6,7 @@
 Install via `npm`:
 
 ```sh
-npm install @o3/next-custom-server --save
+npm install next-custom-server --save
 ```
 
 ## 🛠️ Usage
